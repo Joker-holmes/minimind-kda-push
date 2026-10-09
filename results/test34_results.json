@@ -1,0 +1,171 @@
+{
+  "test": "TEST34_REAL_CORPUS_TRAINING",
+  "seed": 3401,
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "pytorch": "2.11.0+cu128",
+  "dataset": "D:\\appplication\\pycharm\\minimind-kda\\dataset\\pretrain_t2t_mini.jsonl",
+  "pilot_record_limit": 30000,
+  "train_block_count": 42977,
+  "validation_block_count": 4788,
+  "seq_len": 128,
+  "batch_size": 2,
+  "train_steps": 100,
+  "eval_batches": 40,
+  "autocast_dtype": "torch.bfloat16",
+  "results": [
+    {
+      "variant": "baseline_attention",
+      "use_kda": false,
+      "use_attn_res": false,
+      "seed": 3401,
+      "parameters": 34414080,
+      "train_records": 42977,
+      "validation_records": 4788,
+      "seq_len": 128,
+      "batch_size": 2,
+      "train_steps": 100,
+      "learning_rate": 0.0003,
+      "train_loss_first": 8.868265151977539,
+      "train_loss_last": 6.977588653564453,
+      "train_loss_mean_last_10": 7.34268364906311,
+      "final_val_loss": 7.314957880973816,
+      "final_val_ppl": 1502.608506300912,
+      "measured_step_count": 97,
+      "median_step_time_ms": 33.20040000107838,
+      "mean_measured_step_time_ms": 33.50001443304228,
+      "measured_tokens_per_second": 7641.787752410574,
+      "measured_training_seconds": 3.2495014000051015,
+      "peak_memory_mb": 706.46728515625,
+      "validation_history": [
+        {
+          "val_loss": 7.627716600894928,
+          "val_ppl": 2054.3537506336916,
+          "eval_tokens": 10240,
+          "step": 25
+        },
+        {
+          "val_loss": 7.507892096042633,
+          "val_ppl": 1822.3681143834685,
+          "eval_tokens": 10240,
+          "step": 50
+        },
+        {
+          "val_loss": 7.497732555866241,
+          "val_ppl": 1803.947423625751,
+          "eval_tokens": 10240,
+          "step": 75
+        },
+        {
+          "val_loss": 7.389328050613403,
+          "val_ppl": 1618.6181179843481,
+          "eval_tokens": 10240,
+          "step": 100
+        }
+      ],
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\baseline_attention.pt"
+    },
+    {
+      "variant": "kda_v3",
+      "use_kda": true,
+      "use_attn_res": false,
+      "seed": 3401,
+      "parameters": 36868960,
+      "train_records": 42977,
+      "validation_records": 4788,
+      "seq_len": 128,
+      "batch_size": 2,
+      "train_steps": 100,
+      "learning_rate": 0.0003,
+      "train_loss_first": 9.002639770507812,
+      "train_loss_last": 6.280692100524902,
+      "train_loss_mean_last_10": 6.763853931427002,
+      "final_val_loss": 6.833762800693512,
+      "final_val_ppl": 928.6786790680004,
+      "measured_step_count": 97,
+      "median_step_time_ms": 86.62419999745907,
+      "mean_measured_step_time_ms": 160.11594329895686,
+      "measured_tokens_per_second": 1598.8414065800769,
+      "measured_training_seconds": 15.531246499998815,
+      "peak_memory_mb": 751.69775390625,
+      "validation_history": [
+        {
+          "val_loss": 7.945229578018188,
+          "val_ppl": 2822.0802746402455,
+          "eval_tokens": 10240,
+          "step": 25
+        },
+        {
+          "val_loss": 7.239344644546509,
+          "val_ppl": 1393.180643089828,
+          "eval_tokens": 10240,
+          "step": 50
+        },
+        {
+          "val_loss": 7.06063072681427,
+          "val_ppl": 1165.17984422895,
+          "eval_tokens": 10240,
+          "step": 75
+        },
+        {
+          "val_loss": 6.888336193561554,
+          "val_ppl": 980.768250428614,
+          "eval_tokens": 10240,
+          "step": 100
+        }
+      ],
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\kda_v3.pt"
+    },
+    {
+      "variant": "kda_v3_attnres",
+      "use_kda": true,
+      "use_attn_res": true,
+      "seed": 3401,
+      "parameters": 46309216,
+      "train_records": 42977,
+      "validation_records": 4788,
+      "seq_len": 128,
+      "batch_size": 2,
+      "train_steps": 100,
+      "learning_rate": 0.0003,
+      "train_loss_first": 8.858134269714355,
+      "train_loss_last": 6.31766414642334,
+      "train_loss_mean_last_10": 6.75890588760376,
+      "final_val_loss": 6.823965537548065,
+      "final_val_ppl": 919.624594717339,
+      "measured_step_count": 97,
+      "median_step_time_ms": 78.1453000017791,
+      "mean_measured_step_time_ms": 153.00291134006272,
+      "measured_tokens_per_second": 1673.170776672458,
+      "measured_training_seconds": 14.841282399986085,
+      "peak_memory_mb": 858.10791015625,
+      "validation_history": [
+        {
+          "val_loss": 7.69776566028595,
+          "val_ppl": 2203.41930050239,
+          "eval_tokens": 10240,
+          "step": 25
+        },
+        {
+          "val_loss": 7.183791661262513,
+          "val_ppl": 1317.8958112099933,
+          "eval_tokens": 10240,
+          "step": 50
+        },
+        {
+          "val_loss": 7.0755046010017395,
+          "val_ppl": 1182.6401116517527,
+          "eval_tokens": 10240,
+          "step": 75
+        },
+        {
+          "val_loss": 6.8846503615379335,
+          "val_ppl": 977.159957269667,
+          "eval_tokens": 10240,
+          "step": 100
+        }
+      ],
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\kda_v3_attnres.pt"
+    }
+  ]
+}

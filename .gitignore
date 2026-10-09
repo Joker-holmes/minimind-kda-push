@@ -1,0 +1,158 @@
+﻿# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================
+# IDE / OS
+# ============================================================
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# Model checkpoints
+# ============================================================
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+
+# ============================================================
+# Experiment outputs
+# ============================================================
+test*_outputs/
+*_outputs/
+checkpoints/
+
+# ============================================================
+# Data (never commit)
+# ============================================================
+dataset/*.jsonl
+dataset/*.txt
+dataset/*.csv
+dataset/*.parquet
+dataset/*.py
+!dataset/README.md
+
+test10_1_data/
+
+# ============================================================
+# Tokenizer files
+# ============================================================
+model/tokenizer.json
+model/tokenizer_config.json
+model/special_tokens_map.json
+model/vocab.json
+model/merges.txt
+model/*.model
+model/*.vocab
+
+# ============================================================
+# MiniMind upstream files (not part of KDA work)
+# ============================================================
+trainer/
+scripts/
+eval_llm.py
+CODE_OF_CONDUCT.md
+README_en.md
+images/
+
+# ============================================================
+# Debug / scratch
+# ============================================================
+debug_*.py
+benchmark_attention_vs_kda.py
+新建*
+*.tmp
+prepare_for_github.ps1
+
+# ============================================================
+# Legacy KDA versions
+# ============================================================
+model/kda_attention.py
+model/kda_attention_v2.py
+model/model_lora.py
+model/model_minimind_original.py
+model/model_minimind_before_attnres.py
+
+# ============================================================
+# Old test files (not part of the final suite)
+# ============================================================
+TEST 10.py
+TEST 10.1.py
+TEST 10.2.py
+TEST 11.py
+test_kda.py
+test_kda_v2.py
+test_kda_v3.py
+test_kda_cache.py
+test_kda_generation.py
+test_minimind_kda.py
+test_minimind_kda_ar.py
+test_attention_residual.py
+test_ablation.py
+test10.py
+test11.py
+test12_*.py
+test12_*.json
+test13_*.py
+test13_*.json
+test13_*.csv
+test14_*.py
+test14_*.json
+test14_*.csv
+test15_*.py
+test15_*.json
+test15_*.csv
+test16_*.py
+test16_*.json
+test16_*.csv
+test17_*.py
+test17_*.json
+test18_*.py
+test18_*.json
+test19_*.py
+test19_*.json
+test20_*.py
+test20_*.json
+test24_*.py
+test25_*.py
+test27_*.py
+test28_*.py
+test30_*.py
+test31_*.py
+test32_*.py
+test33_*.py
+test34_*.csv
+test35_*.csv
+test36_*.csv
+test37_*.csv
+
+# ============================================================
+# Standalone result files in root (moved to results/)
+# ============================================================
+/test12_kda_kernel_results.json
+/test13_long_context_results.json
+/test14_ablation_results.json
+/test15_benchmark_audit_results.json
+/test16_kda_prefill_profile_results.json
+/test17_kda_recurrence_results.json
+/test18_kda_loop_overhead_results.json
+/test19_kda_full_model_ab_results.json
+/test20_kda_cache_regression_results.json

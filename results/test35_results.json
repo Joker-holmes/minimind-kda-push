@@ -1,0 +1,179 @@
+{
+  "test": "TEST35_FULL_VALIDATION_BENCHMARK",
+  "seed": 3401,
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "pytorch": "2.11.0+cu128",
+  "autocast_dtype": "torch.bfloat16",
+  "checkpoint_directory": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints",
+  "validation_blocks": 4788,
+  "seq_len": 128,
+  "batch_size": 2,
+  "results": [
+    {
+      "variant": "baseline_attention",
+      "use_kda": false,
+      "use_attn_res": false,
+      "parameters": 34414080,
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\baseline_attention.pt",
+      "validation": {
+        "validation_blocks": 4788,
+        "validation_batches": 2394,
+        "target_tokens": 612864,
+        "token_weighted_loss": 7.357480349696071,
+        "ppl": 1567.8810698065624,
+        "next_token_accuracy": 0.05295954730576441,
+        "evaluation_seconds": 15.20035789999747,
+        "evaluation_target_tokens_per_second": 40319.05064551815
+      },
+      "benchmark": {
+        "benchmark_type": "full_sequence_forward_no_cache",
+        "batch_size": 2,
+        "sequence_length": 128,
+        "warmup_steps": 15,
+        "measured_steps_per_round": 60,
+        "rounds": 3,
+        "median_of_round_medians_ms": 5.996199997753138,
+        "mean_of_round_means_ms": 6.101615555518138,
+        "median_round_throughput_tokens_per_second": 42028.7749374286,
+        "peak_allocated_memory_mb": 179.158203125,
+        "round_results": [
+          {
+            "round": 1,
+            "median_latency_ms": 5.978700000923709,
+            "mean_latency_ms": 6.158321666832004,
+            "min_latency_ms": 5.71729999865056,
+            "max_latency_ms": 8.048900002904702,
+            "throughput_tokens_per_second": 41569.76751941781
+          },
+          {
+            "round": 2,
+            "median_latency_ms": 5.996199997753138,
+            "mean_latency_ms": 6.091064999660982,
+            "min_latency_ms": 5.740700002206722,
+            "max_latency_ms": 7.128099998226389,
+            "throughput_tokens_per_second": 42028.7749374286
+          },
+          {
+            "round": 3,
+            "median_latency_ms": 6.048949999239994,
+            "mean_latency_ms": 6.05546000006143,
+            "min_latency_ms": 5.670700000337092,
+            "max_latency_ms": 6.730400000378722,
+            "throughput_tokens_per_second": 42275.89646325845
+          }
+        ]
+      }
+    },
+    {
+      "variant": "kda_v3",
+      "use_kda": true,
+      "use_attn_res": false,
+      "parameters": 36868960,
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\kda_v3.pt",
+      "validation": {
+        "validation_blocks": 4788,
+        "validation_batches": 2394,
+        "target_tokens": 612864,
+        "token_weighted_loss": 6.8489191577946436,
+        "ppl": 942.8612714824541,
+        "next_token_accuracy": 0.09643575083542189,
+        "evaluation_seconds": 38.617330299999594,
+        "evaluation_target_tokens_per_second": 15870.180440723176
+      },
+      "benchmark": {
+        "benchmark_type": "full_sequence_forward_no_cache",
+        "batch_size": 2,
+        "sequence_length": 128,
+        "warmup_steps": 15,
+        "measured_steps_per_round": 60,
+        "rounds": 3,
+        "median_of_round_medians_ms": 15.946250001434237,
+        "mean_of_round_means_ms": 16.02054999992914,
+        "median_round_throughput_tokens_per_second": 15964.722951268159,
+        "peak_allocated_memory_mb": 189.0615234375,
+        "round_results": [
+          {
+            "round": 1,
+            "median_latency_ms": 15.892400000666385,
+            "mean_latency_ms": 16.03535499998543,
+            "min_latency_ms": 15.289499999198597,
+            "max_latency_ms": 17.963499998586485,
+            "throughput_tokens_per_second": 15964.722951268159
+          },
+          {
+            "round": 2,
+            "median_latency_ms": 15.948399997796514,
+            "mean_latency_ms": 15.988966666615548,
+            "min_latency_ms": 15.36869999836199,
+            "max_latency_ms": 17.108999996708008,
+            "throughput_tokens_per_second": 16011.040947037549
+          },
+          {
+            "round": 3,
+            "median_latency_ms": 15.946250001434237,
+            "mean_latency_ms": 16.03732833318645,
+            "min_latency_ms": 15.341300000727642,
+            "max_latency_ms": 17.603199998120544,
+            "throughput_tokens_per_second": 15962.758551887517
+          }
+        ]
+      }
+    },
+    {
+      "variant": "kda_v3_attnres",
+      "use_kda": true,
+      "use_attn_res": true,
+      "parameters": 46309216,
+      "checkpoint": "D:\\appplication\\pycharm\\minimind-kda\\test34_outputs\\checkpoints\\kda_v3_attnres.pt",
+      "validation": {
+        "validation_blocks": 4788,
+        "validation_batches": 2394,
+        "target_tokens": 612864,
+        "token_weighted_loss": 6.844129980257779,
+        "ppl": 938.3565370572786,
+        "next_token_accuracy": 0.09446794068504595,
+        "evaluation_seconds": 41.27921250000145,
+        "evaluation_target_tokens_per_second": 14846.794860729926
+      },
+      "benchmark": {
+        "benchmark_type": "full_sequence_forward_no_cache",
+        "batch_size": 2,
+        "sequence_length": 128,
+        "warmup_steps": 15,
+        "measured_steps_per_round": 60,
+        "rounds": 3,
+        "median_of_round_medians_ms": 17.08754999890516,
+        "mean_of_round_means_ms": 17.138028888803092,
+        "median_round_throughput_tokens_per_second": 14913.183137570179,
+        "peak_allocated_memory_mb": 224.79296875,
+        "round_results": [
+          {
+            "round": 1,
+            "median_latency_ms": 17.056799999409122,
+            "mean_latency_ms": 17.059486666585144,
+            "min_latency_ms": 16.36329999746522,
+            "max_latency_ms": 17.90149999942514,
+            "throughput_tokens_per_second": 15006.313202930884
+          },
+          {
+            "round": 2,
+            "median_latency_ms": 17.08754999890516,
+            "mean_latency_ms": 17.1885800000382,
+            "min_latency_ms": 16.543600002478343,
+            "max_latency_ms": 18.99319999938598,
+            "throughput_tokens_per_second": 14893.60959424403
+          },
+          {
+            "round": 3,
+            "median_latency_ms": 17.17215000098804,
+            "mean_latency_ms": 17.16601999978593,
+            "min_latency_ms": 16.347300002962584,
+            "max_latency_ms": 18.145099998946534,
+            "throughput_tokens_per_second": 14913.183137570179
+          }
+        ]
+      }
+    }
+  ]
+}
