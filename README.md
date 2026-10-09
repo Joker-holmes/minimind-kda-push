@@ -76,53 +76,53 @@
 
 ```
 
-&#x20;                    ┌────────────────────────────┐
+                    ┌────────────────────────────┐
 
-&#x20;                    │      Input Hidden States    │
+                  │      Input Hidden States    │
 
-&#x20;                    └──────────────┬─────────────┘
+                    └──────────────┬─────────────┘
 
-&#x20;                                   │
+                                   │
 
-&#x20;             ┌─────────────────────┴─────────────────────┐
+            ┌─────────────────────┴─────────────────────┐
 
-&#x20;             │                                           │
+             │                                           │
 
-&#x20;   ┌─────────▼─────────┐                     ┌───────────▼───────────┐
+   ┌─────────▼─────────┐                     ┌───────────▼───────────┐
 
-&#x20;   │  Standard Attention│                     │       KDA V3           │
+   │  Standard Attention│                     │       KDA V3           │
 
-&#x20;   │  (QKV proj → SDPA) │                     │  (Conv → Proj → Norm   │
+   │  (QKV proj → SDPA) │                     │  (Conv → Proj → Norm   │
 
-&#x20;   │                    │                     │   → Chunked Delta Rule)│
+   │                    │                     │   → Chunked Delta Rule)│
 
-&#x20;   └─────────┬──────────┘                     └───────────┬───────────┘
+   └─────────┬──────────┘                     └───────────┬───────────┘
 
-&#x20;             │                                           │
+             │                                           │
 
-&#x20;             └─────────────────────┬─────────────────────┘
+             └─────────────────────┬─────────────────────┘
 
-&#x20;                                   │
+                                  │
 
-&#x20;                    ┌──────────────▼─────────────┐
+                    ┌──────────────▼─────────────┐
 
-&#x20;                    │         MLP (SwiGLU)        │
+                    │         MLP (SwiGLU)        │
 
-&#x20;                    └──────────────┬─────────────┘
+                    └──────────────┬─────────────┘
 
-&#x20;                                   │
+                                   │
 
-&#x20;                    ┌──────────────▼─────────────┐
+                    ┌──────────────▼─────────────┐
 
-&#x20;                    │  Block Attention Residual   │
+                    │  Block Attention Residual   │
 
-&#x20;                    │        (optional)           │
+                    │        (optional)           │
 
-&#x20;                    └──────────────┬─────────────┘
+                    └──────────────┬─────────────┘
 
-&#x20;                                   │
+                                   │
 
-&#x20;                             Output
+                             Output
 
 ```
 
@@ -136,33 +136,33 @@
 
 x  ──►  ShortConv1d (Q, K, V)  ──►  Linear Projections
 
-&#x20;    ──►  RMSNorm + L2 Normalize
+    ──►  RMSNorm + L2 Normalize
 
-&#x20;    ──►  α, β gates (sigmoid)
+    ──►  α, β gates (sigmoid)
 
-&#x20;    ──►  Chunked Delta-Rule Recurrence
+    ──►  Chunked Delta-Rule Recurrence
 
-&#x20;        ┌─────────────────────────────────────────────┐
+        ┌─────────────────────────────────────────────┐
 
-&#x20;        │ Per chunk (C=64):                            │
+        │ Per chunk (C=64):                            │
 
-&#x20;        │   D\_cum = cumprod(α)          \[fp64]         │
+        │   D\_cum = cumprod(α)          \[fp64]         │
 
-&#x20;        │   M = β ⊙ (K K^T) ⊙ ratio    \[unit lower tri]│
+        │   M = β ⊙ (K K^T) ⊙ ratio    \[unit lower tri]│
 
-&#x20;        │   M\_full = M + 1.05 I         \[diagonal damp]│
+        │   M\_full = M + 1.05 I         \[diagonal damp]│
 
-&#x20;        │   E = solve(M\_full, V - D S K)\[torch.linalg] │
+        │   E = solve(M\_full, V - D S K)\[torch.linalg] │
 
-&#x20;        │   out = D Q S + A\_intra E                    │
+        │   out = D Q S + A\_intra E                    │
 
-&#x20;        │   S = D\_C S + (coeff ⊙ K) E^T                │
+        │   S = D\_C S + (coeff ⊙ K) E^T                │
 
-&#x20;        │   S ← clip(S, max\_norm=20)   \[state clip]    │
+        │   S ← clip(S, max\_norm=20)   \[state clip]    │
 
-&#x20;        └─────────────────────────────────────────────┘
+        └─────────────────────────────────────────────┘
 
-&#x20;    ──►  Output Projection
+    ──►  Output Projection
 
 ```
 
@@ -438,23 +438,7 @@ minimind-kda/
 
 
 
-\## 引用
 
-
-
-```
-
-@misc{minimind-kda-2026,
-
-&#x20; title  = {MiniMind-KDA: Kimi Delta Attention on a Small Language Model},
-
-&#x20; author = {Your Name},
-
-&#x20; year   = {2026},
-
-}
-
-```
 
 
 
